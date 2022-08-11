@@ -3,22 +3,36 @@ package co.edu.unisabana.CRUD.controller;
 import co.edu.unisabana.CRUD.DELETE.TeamDelete;
 import co.edu.unisabana.CRUD.DTO.TeamDTO;
 import co.edu.unisabana.CRUD.POST.TeamPost;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/equipos")
 public class TeamController {
 
+    private final TeamPost servicio;
     ArrayList teams;
 
-    @GetMapping("/search")
-    public List<TeamDTO> busqueda(@RequestParam String q) {
+    public TeamController(TeamPost servicio) {
+        this.servicio = servicio;
+    }
 
+    @GetMapping
+    public Iterable<TeamDTO> list() {
+        return servicio.list();
+    }
+
+    @PostMapping
+    public TeamDTO crear(@RequestBody TeamDTO equipo) {
+        return servicio.guardar(equipo);
+    }
+
+    @PutMapping
+    public TeamDTO update(@PathVariable("nombre") String nombre, @RequestBody TeamDTO equipo){
+        return servicio.actualizar(nombre, equipo);
     }
 
     @GetMapping("/delete")
@@ -27,10 +41,5 @@ public class TeamController {
 
     }
 
-    @GetMapping("/post")
-    public void post() {
-        TeamPost subir = new TeamPost();
-
-    }
 
 }
