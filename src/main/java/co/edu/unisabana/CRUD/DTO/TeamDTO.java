@@ -1,4 +1,4 @@
-package DTO;
+package co.edu.unisabana.CRUD.DTO;
 
 
 
