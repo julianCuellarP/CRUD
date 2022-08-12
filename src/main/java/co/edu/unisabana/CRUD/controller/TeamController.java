@@ -32,7 +32,8 @@ public class TeamController {
         return servicio.guardar(equipo);
     }
 
-    @PutMapping
+
+    @PutMapping("/{id}")
     public TeamDTO encontrar(@PathVariable("id") int id, @RequestBody TeamDTO equipo) {
         return servicio.actualizar(id, equipo);
     }
