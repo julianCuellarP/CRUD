@@ -1,22 +1,19 @@
 package co.edu.unisabana.CRUD.controller;
 
-import co.edu.unisabana.CRUD.DELETE.TeamDelete;
 import co.edu.unisabana.CRUD.DTO.TeamDTO;
-import co.edu.unisabana.CRUD.POST.TeamPost;
+import co.edu.unisabana.CRUD.Service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RestController
-@RequestMapping("/equipos")
 public class TeamController {
 
-    private final TeamPost servicio;
+    private TeamService servicio;
     ArrayList teams;
 
-    public TeamController(TeamPost servicio) {
+    public TeamController(TeamService servicio) {
         this.servicio = servicio;
     }
 
@@ -25,19 +22,19 @@ public class TeamController {
         return servicio.list();
     }
 
-    @PostMapping
+    @PostMapping("/post")
     public TeamDTO crear(@RequestBody TeamDTO equipo) {
         return servicio.guardar(equipo);
     }
 
-    @PutMapping
+    @PutMapping("/put")
     public TeamDTO update(@PathVariable("nombre") String nombre, @RequestBody TeamDTO equipo){
         return servicio.actualizar(nombre, equipo);
     }
 
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public void delete() {
-        TeamDelete eliminar = new TeamDelete();
+
 
     }
 

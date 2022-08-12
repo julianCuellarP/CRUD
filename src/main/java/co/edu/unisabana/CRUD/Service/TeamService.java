@@ -1,14 +1,14 @@
-package co.edu.unisabana.CRUD.POST;
+package co.edu.unisabana.CRUD.Service;
 
 import co.edu.unisabana.CRUD.DTO.TeamDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamPost {
+public class TeamService {
     private List<TeamDTO> team;
 
-    public TeamPost() {
+    public void TeamPost() {
         team = new ArrayList<>();
         team.add(new TeamDTO(16, "postobon", "Colombia", "Millonarios"));
     }
