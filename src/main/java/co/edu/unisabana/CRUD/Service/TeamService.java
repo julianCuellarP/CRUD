@@ -1,15 +1,17 @@
 package co.edu.unisabana.CRUD.Service;
 
 import co.edu.unisabana.CRUD.DTO.TeamDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class TeamService {
+    //Lista
     private List<TeamDTO> team;
 
-    public void TeamPost() {
+    public TeamService() {
         team = new ArrayList<>();
         team.add(new TeamDTO(16, "postobon", "Colombia", "Millonarios"));
     }
