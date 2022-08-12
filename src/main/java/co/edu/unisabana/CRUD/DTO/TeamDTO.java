@@ -1,15 +1,17 @@
 package co.edu.unisabana.CRUD.DTO;
 
 
-
 public class TeamDTO {
-    Integer Numjugadores;
-    String  liga;
+    Integer id;
+    Integer numJugadores;
+    String liga;
     String pais;
     String nombre;
 
-    public TeamDTO(Integer numjugadores, String liga, String pais, String nombre) {
-        Numjugadores = numjugadores;
+
+    public TeamDTO(Integer id, Integer numJugadores, String liga, String pais, String nombre) {
+        this.id = id;
+        this.numJugadores = numJugadores;
         this.liga = liga;
         this.pais = pais;
         this.nombre = nombre;
@@ -23,12 +25,12 @@ public class TeamDTO {
         this.nombre = nombre;
     }
 
-    public Integer getNumjugadores() {
-        return Numjugadores;
+    public Integer getNumJugadores() {
+        return numJugadores;
     }
 
-    public void setNumjugadores(Integer numjugadores) {
-        Numjugadores = numjugadores;
+    public void setNumJugadores(Integer numJugadores) {
+        this.numJugadores = numJugadores;
     }
 
     public String getLiga() {
@@ -45,5 +47,13 @@ public class TeamDTO {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

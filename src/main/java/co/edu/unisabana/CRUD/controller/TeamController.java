@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/equipos")
 public class TeamController {
 
     private final TeamService servicio;
@@ -22,20 +22,24 @@ public class TeamController {
         return servicio.list();
     }
 
+    @GetMapping("/{id}")
+    public TeamDTO buscar(@PathVariable("id") int id) {
+        return servicio.busca(id);
+    }
+
     @PostMapping
     public TeamDTO crear(@RequestBody TeamDTO equipo) {
         return servicio.guardar(equipo);
     }
 
     @PutMapping
-    public TeamDTO update(@PathVariable("nombre") String nombre, @RequestBody TeamDTO equipo){
-        return servicio.actualizar(nombre, equipo);
+    public TeamDTO encontrar(@PathVariable("id") int id, @RequestBody TeamDTO equipo) {
+        return servicio.actualizar(id, equipo);
     }
 
-    @DeleteMapping
-    public void delete() {
-
-
+    @DeleteMapping("/{id}")
+    public boolean borrar(@PathVariable("id") int id) {
+        return servicio.borrar(id);
     }
 
 

@@ -13,11 +13,21 @@ public class TeamService {
 
     public TeamService() {
         team = new ArrayList<>();
-        team.add(new TeamDTO(16, "postobon", "Colombia", "Millonarios"));
+        team.add(new TeamDTO(1, 16, "postobon", "Colombia", "Millonarios"));
     }
 
     public List<TeamDTO> list() {
         return team;
+    }
+
+    //Buscar
+    public TeamDTO busca(int id) {
+        for (TeamDTO team : team) {
+            if (team.getId() == id) {
+                return team;
+            }
+        }
+        return null;
     }
 
     // Crear
@@ -27,13 +37,24 @@ public class TeamService {
     }
 
     // Actualizar
-    public TeamDTO actualizar(String nombre, TeamDTO equipo) {
+    public TeamDTO actualizar(Integer id, TeamDTO equipo) {
+        int index = 0;
         for (TeamDTO l : team) {
-            if (l.getNombre() == nombre) {
-                equipo.setNombre(nombre);
-                team.set(0, equipo);
+            if (l.getId() == id) {
+                equipo.setId(id);
+                team.set(index, equipo);
             }
         }
         return equipo;
+    }
+
+    //Eliminar
+    public boolean borrar(int id) {
+        for (TeamDTO c : team) {
+            if (c.getId() == id) {
+                return team.remove(c);
+            }
+        }
+        return false;
     }
 }
