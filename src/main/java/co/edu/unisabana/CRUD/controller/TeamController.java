@@ -11,8 +11,7 @@ import java.util.ArrayList;
 @RequestMapping("/cliente")
 public class TeamController {
 
-    private TeamService servicio;
-    ArrayList teams;
+    private final TeamService servicio;
 
     public TeamController(TeamService servicio) {
         this.servicio = servicio;
