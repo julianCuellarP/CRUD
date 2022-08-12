@@ -4,9 +4,6 @@ import co.edu.unisabana.CRUD.DTO.TeamDTO;
 import co.edu.unisabana.CRUD.Service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.ArrayList;
-
 @RestController
 @RequestMapping("/equipos")
 public class TeamController {
@@ -34,7 +31,7 @@ public class TeamController {
 
 
     @PutMapping("/{id}")
-    public TeamDTO encontrar(@PathVariable("id") int id, @RequestBody TeamDTO equipo) {
+    public TeamDTO actualizar(@PathVariable("id") int id, @RequestBody TeamDTO equipo) {
         return servicio.actualizar(id, equipo);
     }
 

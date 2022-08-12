@@ -36,18 +36,6 @@ public class TeamService {
         return equipo;
     }
 
-    // Actualizar
-    public TeamDTO actualizar(Integer id, TeamDTO equipo) {
-        int index = 0;
-        for (TeamDTO l : team) {
-            if (l.getId() == id) {
-                equipo.setId(id);
-                team.set(index, equipo);
-            }
-        }
-        return equipo;
-    }
-
     //Eliminar
     public boolean borrar(int id) {
         for (TeamDTO c : team) {
@@ -56,5 +44,12 @@ public class TeamService {
             }
         }
         return false;
+    }
+
+    //Actualizar
+    public TeamDTO actualizar(int id, TeamDTO equipo){
+        guardar(equipo);
+        borrar(id);
+        return equipo;
     }
 }
