@@ -4,7 +4,6 @@ import co.edu.unisabana.CRUD.DTO.TeamDTO;
 import co.edu.unisabana.CRUD.Service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ public class TeamController {
 
     private final TeamService servicio;
     private List<TeamDTO> equipo;
-
     public TeamController(TeamService servicio) {
         this.servicio = servicio;
     }
@@ -29,7 +27,6 @@ public class TeamController {
     public TeamDTO buscar(@PathVariable("id") int id) {
         return servicio.busca(id);
     }
-
     @GetMapping("/buscar")
     public List<TeamDTO> datos(@RequestParam String q) {
         List<TeamDTO> resultados = new ArrayList<>();
@@ -40,26 +37,7 @@ public class TeamController {
         });
         return  resultados;
     }
-    @GetMapping("/buscar")
-    public List<TeamDTO> datos2(@RequestParam String q) {
-        List<TeamDTO> resultados = new ArrayList<>();
-        equipo.forEach(dato -> {
-            if (dato.getLiga().contains(q)) {
-                resultados.add(dato);
-            }
-        });
-        return  resultados;
-    }
-    @GetMapping("/buscar")
-    public List<TeamDTO> datos3(@RequestParam String q) {
-        List<TeamDTO> resultados = new ArrayList<>();
-        equipo.forEach(dato -> {
-            if (dato.getPais().contains(q)) {
-                resultados.add(dato);
-            }
-        });
-        return  resultados;
-    }
+
     @PostMapping
     public TeamDTO crear(@RequestBody TeamDTO equipo) {
         return servicio.guardar(equipo);
@@ -67,7 +45,7 @@ public class TeamController {
 
 
     @PutMapping("/{id}")
-    public TeamDTO encontrar(@PathVariable("id") int id, @RequestBody TeamDTO equipo) {
+    public TeamDTO actualizar(@PathVariable("id") int id, @RequestBody TeamDTO equipo) {
         return servicio.actualizar(id, equipo);
     }
 
