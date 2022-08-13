@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/equipos")
 public class TeamController {
 
     private final TeamService servicio;
+    private List<TeamDTO> equipo;
 
     public TeamController(TeamService servicio) {
         this.servicio = servicio;
@@ -19,12 +21,24 @@ public class TeamController {
 
     @GetMapping
     public Iterable<TeamDTO> list() {
-        return servicio.list();
+        equipo = servicio.list();
+        return equipo;
     }
 
     @GetMapping("/{id}")
     public TeamDTO buscar(@PathVariable("id") int id) {
         return servicio.busca(id);
+    }
+
+    @GetMapping("/buscar")
+    public List<TeamDTO> datos(@RequestParam String q) {
+        List<TeamDTO> resultados = new ArrayList<>();
+        equipo.forEach(dato -> {
+            if (dato.getNombre().contains(q)) {
+                resultados.add(dato);
+            }
+        });
+        return  resultados;
     }
 
     @PostMapping
