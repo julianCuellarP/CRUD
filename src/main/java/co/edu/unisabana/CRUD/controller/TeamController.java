@@ -13,6 +13,7 @@ public class TeamController {
 
     private final TeamService servicio;
     private List<TeamDTO> equipo;
+
     public TeamController(TeamService servicio) {
         this.servicio = servicio;
     }
@@ -27,7 +28,8 @@ public class TeamController {
     public TeamDTO buscar(@PathVariable("id") int id) {
         return servicio.busca(id);
     }
-    @GetMapping("/buscar")
+
+    @GetMapping("/buscarNom")
     public List<TeamDTO> datos(@RequestParam String q) {
         List<TeamDTO> resultados = new ArrayList<>();
         equipo.forEach(dato -> {
@@ -35,7 +37,29 @@ public class TeamController {
                 resultados.add(dato);
             }
         });
-        return  resultados;
+        return resultados;
+    }
+
+    @GetMapping("/buscarLiga")
+    public List<TeamDTO> datosL(@RequestParam String q) {
+        List<TeamDTO> resultados = new ArrayList<>();
+        equipo.forEach(dato -> {
+            if (dato.getLiga().contains(q)) {
+                resultados.add(dato);
+            }
+        });
+        return resultados;
+    }
+
+    @GetMapping("/buscarPais")
+    public List<TeamDTO> datosP(@RequestParam String q) {
+        List<TeamDTO> resultados = new ArrayList<>();
+        equipo.forEach(dato -> {
+            if (dato.getPais().contains(q)) {
+                resultados.add(dato);
+            }
+        });
+        return resultados;
     }
 
     @PostMapping
