@@ -40,7 +40,26 @@ public class TeamController {
         });
         return  resultados;
     }
-
+    @GetMapping("/buscar")
+    public List<TeamDTO> datos2(@RequestParam String q) {
+        List<TeamDTO> resultados = new ArrayList<>();
+        equipo.forEach(dato -> {
+            if (dato.getLiga().contains(q)) {
+                resultados.add(dato);
+            }
+        });
+        return  resultados;
+    }
+    @GetMapping("/buscar")
+    public List<TeamDTO> datos3(@RequestParam String q) {
+        List<TeamDTO> resultados = new ArrayList<>();
+        equipo.forEach(dato -> {
+            if (dato.getPais().contains(q)) {
+                resultados.add(dato);
+            }
+        });
+        return  resultados;
+    }
     @PostMapping
     public TeamDTO crear(@RequestBody TeamDTO equipo) {
         return servicio.guardar(equipo);

@@ -9,14 +9,14 @@ import java.util.List;
 @Service
 public class TeamService {
     //Lista
-    private List<TeamDTO> team;
+    private ArrayList<TeamDTO> team;
 
     public TeamService() {
         team = new ArrayList<>();
         team.add(new TeamDTO(1, 16, "postobon", "Colombia", "Millonarios"));
     }
 
-    public List<TeamDTO> list() {
+    public ArrayList<TeamDTO> list() {
         return team;
     }
 
