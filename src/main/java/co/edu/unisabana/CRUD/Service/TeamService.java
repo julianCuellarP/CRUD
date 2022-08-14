@@ -47,11 +47,12 @@ public class TeamService {
     private String numJugadores(){
         for(TeamDTO i: team){
             if (i.getNumJugadores() > 25 ){
-                return "El numero de Jugadores es correcto puede crear su equipo";
+                return "Codigo 200:El numero de Jugadores es correcto puede crear su equipo";
             }
         }
         return "La liga Postobon no permite mas de 25 jugadores tendra que recindir el contrato de alguno"+
                 "si quiere continuar con la creacion de su equipo";
+
     }
 
 
@@ -60,7 +61,7 @@ public class TeamService {
         String pais = "";
         for(TeamDTO i: team){
             if (i.getPais() != "colombia".toUpperCase()){
-                return "El equipo se puede crear sin problema";
+                return "Codigo 200:El equipo se puede crear sin problema";
             }
         }
         return "El equipo a crear solo puede ser de Colombia";
@@ -71,7 +72,7 @@ public class TeamService {
         String nombre = "";
         for(TeamDTO i : team){
             if (i.getNombre() == nombre){
-                return "El equipo ha sido creado existosamente";
+                return "Codigo 200:El equipo ha sido creado existosamente";
             }
         }
         return "Lo lamentamos ese nombre de equipo ya existe ingrese otro nombre para poder crear a su equipo";

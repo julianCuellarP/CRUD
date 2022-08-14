@@ -4,6 +4,7 @@ import co.edu.unisabana.CRUD.DTO.TeamDTO;
 import co.edu.unisabana.CRUD.Service.TeamService;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class TeamController {
         equipo.forEach(dato -> {
             if (dato.getNombre().contains(q)) {
                 resultados.add(dato);
+                ok();
+            }else {
+                NotFound();
             }
         });
         return resultados;
@@ -46,6 +50,9 @@ public class TeamController {
         equipo.forEach(dato -> {
             if (dato.getLiga().contains(q)) {
                 resultados.add(dato);
+                ok();
+            }else{
+                NotFound();
             }
         });
         return resultados;
@@ -57,6 +64,9 @@ public class TeamController {
         equipo.forEach(dato -> {
             if (dato.getPais().contains(q)) {
                 resultados.add(dato);
+                ok();
+            } else {
+                NotFound();
             }
         });
         return resultados;
@@ -78,7 +88,13 @@ public class TeamController {
         return servicio.borrar(id);
     }
 
+    public String ok() {
+        return "The request was successfully completed.CODE 200";
+    }
 
+    public String NotFound() {
+        return "The requested resource was not found. CODE 404";
+    }
 
 
 }
