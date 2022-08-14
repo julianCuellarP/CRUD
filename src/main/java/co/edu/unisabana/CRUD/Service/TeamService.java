@@ -15,7 +15,7 @@ public class TeamService {
     public TeamService() {
         team = new ArrayList<>();
         team.add(new TeamDTO(1, 16, "postobon", "Colombia", "Millonarios"));
-        team.add(new TeamDTO(1, 23, "postobon", "Colombia", "Atletico Nacional"));
+        team.add(new TeamDTO(2, 23, "postobon", "Colombia", "Atletico Nacional"));
 
     }
 
