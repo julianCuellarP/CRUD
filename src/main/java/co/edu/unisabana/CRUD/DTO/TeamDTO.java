@@ -9,6 +9,8 @@ public class TeamDTO {
     String nombre;
 
 
+
+
     public TeamDTO(Integer id, Integer numJugadores, String liga, String pais, String nombre) {
         this.id = id;
         this.numJugadores = numJugadores;
@@ -52,8 +54,11 @@ public class TeamDTO {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
+
+
+
+
 }
